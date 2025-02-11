@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffdde1;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2em;
+            color: #ff4081;
+        }
+        .heart-container {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        .heart {
+            width: 40px;
+            height: 40px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s;
+            width: 150px;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #333;
+            color: white;
+            position: absolute;
+        }
+        .yes:hover {
+            transform: scale(1.1);
+        }
+        .emoji {
+            position: absolute;
+            font-size: 2em;
+            animation: rain 2s linear infinite;
+        }
+        @keyframes rain {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5em; }
+            .heart { width: 30px; height: 30px; }
+            button { font-size: 1em; padding: 8px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <h1>Do You Love Me?</h1>
+    <div class="heart-container" id="heartContainer">
+        <img src="https://minecraftitemids.com/item/64/enchanted-golden-apple.png" class="heart" id="heart1">
+        <img src="https://minecraftitemids.com/item/64/enchanted-golden-apple.png" class="heart" id="heart2">
+        <img src="https://minecraftitemids.com/item/64/enchanted-golden-apple.png" class="heart" id="heart3">
+    </div>
+    <div class="buttons">
+        <button class="yes" onclick="showLove()">Yes</button>
+        <button class="no" id="noButton" onclick="changeNoText()">No</button>
+    </div>
+    <audio id="sound" src="https://www.myinstants.com/media/sounds/negative_beeps.mp3"></audio>
+    <script>
+        let noClickCount = 0;
+        function showLove() {
+            document.body.innerHTML = "<h1 style='color:#ff4081;'>Yay! I love you too! ❤️</h1>";
+        }
+        function changeNoText() {
+            let noButton = document.getElementById('noButton');
+            let sound = document.getElementById('sound');
+            sound.play();
+            noClickCount++;
+            
+            if (noClickCount == 1) {
+                noButton.textContent = "Fir Se Socho 🤔";
+                document.getElementById("heart3").src = "https://minecraftitemids.com/item/64/apple.png";
+            } else if (noClickCount == 2) {
+                noButton.textContent = "Ha Kar Dijiye 🙏";
+                document.getElementById("heart2").src = "https://minecraftitemids.com/item/64/apple.png";
+            } else if (noClickCount == 3) {
+                noButton.textContent = "Fir Click Kar To 😢";
+                document.getElementById("heart1").src = "https://minecraftitemids.com/item/64/apple.png";
+            } else if (noClickCount == 4) {
+                noButton.textContent = "Mai Ro Dunga 😭";
+                startEmojiRain();
+            }
+            moveNoButton();
+        }
+        function moveNoButton() {
+            let noButton = document.getElementById('noButton');
+            let x = Math.random() * (window.innerWidth - noButton.clientWidth);
+            let y = Math.random() * (window.innerHeight - noButton.clientHeight);
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        }
+        function startEmojiRain() {
+            for (let i = 0; i < 20; i++) {
+                let emoji = document.createElement('div');
+                emoji.classList.add('emoji');
+                emoji.textContent = "😭";
+                emoji.style.left = Math.random() * 100 + "vw";
+                emoji.style.animationDuration = Math.random() * 2 + 1 + "s";
+                document.body.appendChild(emoji);
+                setTimeout(() => { emoji.remove(); }, 3000);
+            }
+        }
+    </script>
+</body>
+</html>
