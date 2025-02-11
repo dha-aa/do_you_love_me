@@ -82,7 +82,9 @@
     </div>
     <div class="buttons">
         <button class="yes" onclick="showLove()">Yes</button>
-        <button class="no" id="noButton" onclick="changeNoText()">No</button>
+       
+        <button class="no"  onclick="changeNoText()">No</button>
+        <button class="no" id="noButton" >No</button>
     </div>
     <audio id="sound" src="https://www.myinstants.com/media/sounds/negative_beeps.mp3"></audio>
     <script>
@@ -98,13 +100,13 @@
             
             if (noClickCount == 1) {
                 noButton.textContent = "Fir Se Socho 🤔";
-                document.getElementById("heart3").src = "https://minecraftitemids.com/item/64/apple.png";
+
             } else if (noClickCount == 2) {
                 noButton.textContent = "Ha Kar Dijiye 🙏";
-                document.getElementById("heart2").src = "https://minecraftitemids.com/item/64/apple.png";
+ 
             } else if (noClickCount == 3) {
                 noButton.textContent = "Fir Click Kar To 😢";
-                document.getElementById("heart1").src = "https://minecraftitemids.com/item/64/apple.png";
+    
             } else if (noClickCount == 4) {
                 noButton.textContent = "Mai Ro Dunga 😭";
                 startEmojiRain();
