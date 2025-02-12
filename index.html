@@ -225,7 +225,7 @@
 
   <!-- Main interactive content -->
   <h1>Do You Love Me?</h1>
-  <p class="no-message" id="noMessage"></p>
+  <p class="no-message" id="noMessage">🤔</p>
   <div class="buttons">
     <button class="yes" onclick="showLove()">Yes</button>
     <button class="btn-no" onmouseover="moveNoButton()" onclick="changeNoText()">No</button>
@@ -261,8 +261,7 @@
         <div style="font-size: 4em; margin-top: 20px; animation: bounce 1s infinite;">
           🥰 💖 💑
         </div>
-        <img src="https://source.unsplash.com/800x600/?love" alt="Romantic Image">
-        <button class="replay-btn" onclick="replay()">Replay</button>
+
       `;
       // Play the romantic background music (user-initiated)
       document.getElementById('romanticMusic').play();
@@ -291,6 +290,7 @@
     // Change the "No" message text with each click
     function changeNoText() {
       const noMessage = document.getElementById('noMessage');
+
       noClickCount++;
       
       const messages = [
@@ -300,10 +300,9 @@
         "plzzzzzzzzzzzzz💔",
         "mana nhi kr skte😢",
         "you are beutiful 🙏",
-        "Just One Chance! 🎀",
-
+        "ht aise nahi kr skte 🎀",
       ];
-      
+    
       if (noClickCount <= messages.length) {
         noMessage.textContent = messages[noClickCount - 1];
         noMessage.style.transform = 'scale(1.1)';
